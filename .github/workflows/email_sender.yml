@@ -1,7 +1,7 @@
 name: "Send email after workflow"
 
 on:
-  workflow_dispatch:
+    workflow_dispatch:
 
 jobs:
   send_email:
