@@ -1,31 +1,32 @@
 name: "Send email after workflow"
 
 on:
-    workflow_dispatch:
+  workflow_dispatch:
 
 jobs:
-    send_email:
-        runs-on: ubuntu-latest
-        steps:
-            - name: "Checkout code"
-              uses: actions/checkout@v2
+  send_email:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout code"
+        uses: actions/checkout@v2
 
-            - name: "Setup pthon"
-              uses: actions/setup-python@v2
-              with:
-                python-version: '3.xx'
+      - name: "Setup Python"
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
 
-            - name: "Install dependencies"
-              run: |
-                pythom -m pip install --upgrade pip
-                pip install smtplib email
+      - name: "Install dependencies"
+        run: |
+          python -m pip install --upgrade pip
+          # Install extra packages only if your script needs them
+          # pip install some-package
 
-            - name: "Send email by executing python script"
-              run: python script.py
-              env:
-                WORLFLOW_NMAE: ${{ github.workflow }}
-                REPO_NAME: ${{ github.repository }}
-                WORKFLOW_RUN_ID: ${{ github.run_id }}
-                SENDER_PASSWORD: ${{ secrets.SENDER_PASSWORD }}
-                SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
-                RECEIVER_EMAIL: ${{ secrets.RECEIVER_EMAIL }}
+      - name: "Send email by executing python script"
+        run: python script.py
+        env:
+          WORKFLOW_NAME: ${{ github.workflow }}
+          REPO_NAME: ${{ github.repository }}
+          WORKFLOW_RUN_ID: ${{ github.run_id }}
+          SENDER_PASSWORD: ${{ secrets.SENDER_PASSWORD }}
+          SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
+          RECEIVER_EMAIL: ${{ secrets.RECEIVER_EMAIL }}
