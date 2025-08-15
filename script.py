@@ -11,7 +11,7 @@ def send_mail(workflow_name, repo_name, workflow_run_id):
     subject = f"Workflow {workflow_name} completed for repo {repo_name}"
     body = (
         f"Hi,\n\n"
-        f"The workflow '{workflow_name}' has completed for the repository '{repo_name}'.\n"
+        f"The workflow '{workflow_name}' has completed for the repository's '{repo_name}'.\n"
         f"More Details:\nRun_ID: {workflow_run_id}\n\n"
         f"Regards,\nGitHub Actions Bot"
     )
