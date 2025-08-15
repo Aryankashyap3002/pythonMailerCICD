@@ -16,10 +16,7 @@ jobs:
           python-version: '3.x'
 
       - name: "Install dependencies"
-        run: |
-          python -m pip install --upgrade pip
-          # Install extra packages only if your script needs them
-          # pip install some-package
+        run: python -m pip install --upgrade pip
 
       - name: "Send email by executing python script"
         run: python script.py
