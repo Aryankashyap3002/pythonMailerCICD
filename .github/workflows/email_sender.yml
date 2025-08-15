@@ -15,7 +15,7 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: "Send email by executing python script"
+      - name: "Send email by executing python's script"
         run: python script.py
         env:
           WORKFLOW_NAME: ${{ github.workflow }}
